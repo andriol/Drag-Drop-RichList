@@ -22,9 +22,9 @@ check.addEventListener("click", checkOrder);
 // display the array's objects in a random order
 function richList() {
   richestPeople
-    .map((person) => ({ value: person, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map((person) => person.value)
+    .map(getRandom)
+    .sort(sortList)
+    .map(getNameValue)
     .forEach(function (person, index) {
       const element = document.createElement("li");
       const attribute = document.createAttribute("data-index");
@@ -40,6 +40,16 @@ function richList() {
       list.appendChild(element);
     });
   addEventListener();
+}
+
+function getRandom(person) {
+  return { value: person, sort: Math.random() };
+}
+function sortList(a, b) {
+  return a.sort - b.sort;
+}
+function getNameValue(person) {
+  return person.value;
 }
 // iterate over li and the person's name
 function addEventListener() {
